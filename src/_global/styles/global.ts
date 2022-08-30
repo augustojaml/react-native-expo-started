@@ -20,11 +20,25 @@ export const theme = {
     regular: "JosefinSans_400Regular",
     bold: "JosefinSans_700Bold",
   },
+  size: {
+    xs: "12px",
+    sm: "14px",
+    base: "16px",
+    lg: "18px",
+    xl: "20px",
+    "2xl": "24px",
+    "3xl": "36px",
+    "5xl": "48px",
+    "6xl": "60px",
+    "7xl": "72px",
+    "8xl": "96px",
+    "9xl": "128px",
+  } as const,
 };
 
 // DEFAUT LABEL
 interface LabelProps {
-  size?: number;
+  size?: keyof typeof theme.size;
   weight?: keyof typeof theme.font;
   color?: keyof typeof theme.colors;
   marginTop?: number;
@@ -33,7 +47,7 @@ interface LabelProps {
 
 export const Label = styled(Text)<LabelProps>`
   ${({ size, weight, color, marginTop, marginBottom }) => css`
-    font-size: ${size ?? 16}px;
+    font-size: ${theme.size[size ?? "base"]};
     font-family: ${theme.font[weight ?? "regular"]};
     color: ${theme.colors[color ?? "gray100"]};
     margin-top: ${marginTop ?? 0}px;
@@ -51,10 +65,25 @@ export const DefaultInput = styled(TextInput)`
 // SEPARATOR
 interface SeparatorProps {
   height?: number;
+  borderBottomWidth?: number;
+  borderBottomColor?: keyof typeof theme.colors;
+  marginTop?: number;
+  marginBottom?: number;
 }
 
 export const Separator = styled(View)<SeparatorProps>`
-  ${({ height }) => css`
+  ${({
+    height,
+    borderBottomWidth,
+    borderBottomColor,
+    theme,
+    marginTop,
+    marginBottom,
+  }) => css`
     height: ${height ?? 0}px;
+    border-bottom-width: ${borderBottomWidth ?? 0}px;
+    border-bottom-color: ${theme.colors[borderBottomColor ?? "gray100"]};
+    margin-top: ${marginTop ?? 0}px;
+    margin-bottom: ${marginBottom ?? 0}px;
   `}
 `;

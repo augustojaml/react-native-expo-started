@@ -18,15 +18,15 @@ export const CustomModal = forwardRef<IHandles, ModalProps>(
     return (
       <Modalize
         ref={ref}
-        adjustToContentHeight={false}
+        adjustToContentHeight={true}
         modalStyle={{ backgroundColor: "transparent" }}
-        scrollViewProps={{ contentContainerStyle: { height: "100%" } }}
+        overlayStyle={{ backgroundColor: "transparent" }}
       >
         <AbsoluteButton onPress={closeModal}>
           <Icon
             name="close-circle-outline"
             size={30}
-            color={theme.colors.gray100}
+            color={theme.colors.primary800}
           />
         </AbsoluteButton>
         {children}
@@ -37,7 +37,7 @@ export const CustomModal = forwardRef<IHandles, ModalProps>(
 
 const AbsoluteButton = styled(TouchableOpacity)`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   z-index: 1;
 `;
