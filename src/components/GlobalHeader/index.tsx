@@ -12,8 +12,10 @@ export function GlobalHeader({
   statusBarBackground,
   minHeight = 70,
   iconLeft = "chevron-back-outline",
-  iconRight = "chevron-forward-outline",
-  onPressLeft = undefined,
+  iconRight = "funnel-outline",
+  iconLeftSize,
+  iconRightSize = 20,
+  onPressLeft = () => {},
   onPressRight = undefined,
   children,
 }: Props) {
@@ -42,10 +44,13 @@ export function GlobalHeader({
               <IconHeader
                 name={iconLeft}
                 color={color ? color : theme.colors.gray100}
+                style={{ fontSize: iconLeftSize ? iconLeftSize : 25 }}
               />
             )}
           </ButtonHeader>
-          <Label weight="bold">{title}</Label>
+          <Label weight="bold" color="gray100" size="sm">
+            {title}
+          </Label>
           <ButtonHeader
             alignItems="flex-end"
             disabled={!onPressRight}
@@ -55,6 +60,7 @@ export function GlobalHeader({
               <IconHeader
                 name={iconRight}
                 color={color ? color : theme.colors.gray100}
+                style={{ fontSize: iconRightSize ? iconRightSize : 25 }}
               />
             )}
           </ButtonHeader>

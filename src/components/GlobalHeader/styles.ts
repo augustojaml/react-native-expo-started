@@ -1,4 +1,4 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
+import Ionicon from "react-native-vector-icons/Ionicons";
 import styled, { css } from "styled-components/native";
 
 interface ContentProps {
@@ -12,6 +12,7 @@ interface ButtonHeaderProps {
 
 interface IconHeaderProps {
   color: string;
+  iconRightSize?: number;
 }
 
 export const Container = styled.View<ContentProps>`
@@ -34,14 +35,15 @@ export const ButtonHeader = styled.TouchableOpacity<ButtonHeaderProps>`
   ${({ alignItems }) => css`
     align-items: ${alignItems ? alignItems : "flex-start"};
     justify-content: center;
-
     width: 50px;
     height: 50px;
   `}
 `;
 
-export const IconHeader = styled(Ionicons)<IconHeaderProps>`
-  font-size: 25px;
-  color: ${({ theme, color }) => (color ? color : theme.colors.gray100)};
-  margin-top: -5px;
+export const IconHeader = styled(Ionicon)<IconHeaderProps>`
+  ${({ theme, color }) => css`
+    font-size: ${25}px;
+    color: ${color ? color : theme.colors.gray100};
+    margin-top: -5px;
+  `}
 `;

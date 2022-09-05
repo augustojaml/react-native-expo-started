@@ -32,13 +32,6 @@ export function Home() {
           <Label>Open the modal</Label>
         </TouchableOpacity>
       </Container>
-      <CustomModal ref={customModal} closeModal={onClose}>
-        <ModalView>
-          <Label color="primary800" size="lg">
-            Modal Container
-          </Label>
-        </ModalView>
-      </CustomModal>
     </>
   );
 }

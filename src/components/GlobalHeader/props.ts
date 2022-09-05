@@ -8,6 +8,8 @@ export interface Props {
   minHeight?: number;
   iconLeft?: string;
   iconRight?: string;
+  iconRightSize?: number;
+  iconLeftSize?: number;
 
   onPressLeft?: any;
   onPressRight?: any;
