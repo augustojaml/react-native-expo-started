@@ -43,7 +43,7 @@ export const ButtonHeader = styled.TouchableOpacity<ButtonHeaderProps>`
 export const IconHeader = styled(Ionicon)<IconHeaderProps>`
   ${({ theme, color }) => css`
     font-size: ${25}px;
-    color: ${color ? color : theme.colors.gray100};
+    color: ${color ? color : theme.colors.white};
     margin-top: -5px;
   `}
 `;

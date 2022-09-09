@@ -1,4 +1,4 @@
-import { Label } from "@global/styles/global";
+import { Text } from "@global/styles/global";
 import React from "react";
 import { StatusBar } from "react-native";
 import { useTheme } from "styled-components/native";
@@ -25,13 +25,13 @@ export function GlobalHeader({
     <>
       <StatusBar
         backgroundColor={
-          statusBarBackground ? statusBarBackground : theme.colors.primary800
+          statusBarBackground ? statusBarBackground : theme.colors.primaryAlt
         }
         translucent
         barStyle="light-content"
       />
       <Container
-        background={background ? background : theme.colors.primary800}
+        background={background ? background : theme.colors.primaryAlt}
         minHeight={minHeight}
       >
         <HeaderContent>
@@ -43,14 +43,14 @@ export function GlobalHeader({
             {onPressLeft && (
               <IconHeader
                 name={iconLeft}
-                color={color ? color : theme.colors.gray100}
+                color={color ? color : theme.colors.white}
                 style={{ fontSize: iconLeftSize ? iconLeftSize : 25 }}
               />
             )}
           </ButtonHeader>
-          <Label weight="bold" color="gray100" size="sm">
+          <Text weight="bold" color="white" size="label">
             {title}
-          </Label>
+          </Text>
           <ButtonHeader
             alignItems="flex-end"
             disabled={!onPressRight}
@@ -59,7 +59,7 @@ export function GlobalHeader({
             {onPressRight && (
               <IconHeader
                 name={iconRight}
-                color={color ? color : theme.colors.gray100}
+                color={color ? color : theme.colors.white}
                 style={{ fontSize: iconRightSize ? iconRightSize : 25 }}
               />
             )}

@@ -26,7 +26,7 @@ export const CustomModal = forwardRef<IHandles, ModalProps>(
           <Icon
             name="close-circle-outline"
             size={30}
-            color={theme.colors.primary800}
+            color={theme.colors.gray}
           />
         </AbsoluteButton>
         {children}

@@ -1,57 +1,86 @@
-import { Text, TextInput, View } from "react-native";
+import { Helper } from "@global/config/helpers";
+import { Text as TextField, TextInput, View } from "react-native";
 import styled, { css } from "styled-components/native";
 
 export const theme = {
   colors: {
-    gray100: "#FDFCFE",
-    gray400: "#6B6B6B",
-    gray700: "#1F1E25",
-    gray800: "#131016",
-
-    primary500: "#e6ddf9",
-    primary400: "#c0abf2",
-    primary600: "#9b78ea",
-    primary800: "#8257e5",
-
-    green500: "#31cf67",
-    red500: "#E23C44",
+    primary: Helper.ENV === "production" ? "#7861F7" : "red",
+    primaryAlt: Helper.ENV === "production" ? "#9BA1FD" : "#8257e5",
+    secondary: Helper.ENV === "production" ? "#D5D6FA" : "#FFE5E1",
+    text: "#262626",
+    background: "#F2F2F7",
+    backgroundPage: "#F2F2F7",
+    gray: "#999999",
+    lightGray: "#D9D9D9",
+    middleGray: "#E4E4E4",
+    darkGray: "#333333",
+    white: "#ffffff",
+    offWhite: "#f9f9f9",
+    lightRed: "#FF76A7",
+    green: "#00C48C",
+    red: "#FF647C",
+    backgroundIcon: "#E3E4E6",
+    black: "#000000",
+    backgroundChat: "#E6DDD6",
+    backgroundChatMessageUser: "#e3fec7",
+    backgroundChatReplyMessage: "rgba(0,0,0,0.1)",
   },
+
   font: {
-    regular: "JosefinSans_400Regular",
-    bold: "JosefinSans_700Bold",
+    jfregular: "JosefinSans_400Regular",
+    jfbold: "JosefinSans_700Bold",
+
+    light: "Montserrat_300Light",
+    regular: "Montserrat_400Regular",
+    medium: "Montserrat_500Medium",
+    bold: "Montserrat_700Bold",
+    black: "Montserrat_700Bold",
   },
+
   size: {
-    xs: "12px",
-    sm: "14px",
-    base: "16px",
-    lg: "18px",
-    xl: "20px",
-    "2xl": "24px",
-    "3xl": "36px",
-    "5xl": "48px",
-    "6xl": "60px",
-    "7xl": "72px",
-    "8xl": "96px",
-    "9xl": "128px",
-  } as const,
+    h1: "30px",
+    h2: "26px",
+    h3: "22px",
+    h4: "20px",
+    h5: "18px",
+    p: "16px",
+    label: "14px",
+    small: "12px",
+    xsmall: "10px",
+  },
 };
 
-// DEFAUT LABEL
-interface LabelProps {
+export const Text = styled(TextField)<{
   size?: keyof typeof theme.size;
   weight?: keyof typeof theme.font;
   color?: keyof typeof theme.colors;
   marginTop?: number;
   marginBottom?: number;
-}
-
-export const Label = styled(Text)<LabelProps>`
-  ${({ size, weight, color, marginTop, marginBottom }) => css`
-    font-size: ${theme.size[size ?? "base"]};
+  marginLeft?: number;
+  marginRight?: number;
+  lineHeight?: number;
+}>`
+  ${({
+    size,
+    weight,
+    color,
+    marginTop,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    lineHeight,
+  }) => css`
+    font-size: ${theme.size[size ?? "label"]};
     font-family: ${theme.font[weight ?? "regular"]};
-    color: ${theme.colors[color ?? "gray100"]};
+    color: ${theme.colors[color ?? "darkGray"]};
     margin-top: ${marginTop ?? 0}px;
     margin-bottom: ${marginBottom ?? 0}px;
+    margin-left: ${marginLeft ?? 0}px;
+    margin-right: ${marginRight ?? 0}px;
+    ${lineHeight &&
+    css`
+      line-height: ${lineHeight}px;
+    `}
   `}
 `;
 
@@ -59,19 +88,16 @@ export const Label = styled(Text)<LabelProps>`
 export const DefaultInput = styled(TextInput)`
   font-size: ${16}px;
   font-family: ${theme.font["regular"]};
-  color: ${theme.colors["gray100"]};
+  color: ${theme.colors["gray"]};
 `;
 
-// SEPARATOR
-interface SeparatorProps {
+export const Separator = styled(View)<{
   height?: number;
   borderBottomWidth?: number;
   borderBottomColor?: keyof typeof theme.colors;
   marginTop?: number;
   marginBottom?: number;
-}
-
-export const Separator = styled(View)<SeparatorProps>`
+}>`
   ${({
     height,
     borderBottomWidth,
@@ -82,7 +108,7 @@ export const Separator = styled(View)<SeparatorProps>`
   }) => css`
     height: ${height ?? 0}px;
     border-bottom-width: ${borderBottomWidth ?? 0}px;
-    border-bottom-color: ${theme.colors[borderBottomColor ?? "gray100"]};
+    border-bottom-color: ${theme.colors[borderBottomColor ?? "gray"]};
     margin-top: ${marginTop ?? 0}px;
     margin-bottom: ${marginBottom ?? 0}px;
   `}

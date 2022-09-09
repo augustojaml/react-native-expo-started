@@ -1,9 +1,9 @@
 import { CustomModal } from "@components/CustomModal";
 import { GlobalHeader } from "@components/GlobalHeader";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Label, Separator } from "@global/styles/global";
+import { Separator, Text } from "@global/styles/global";
 import React, { useRef } from "react";
-import { Dimensions, StatusBar, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Modalize } from "react-native-modalize";
 import { useTheme } from "styled-components/native";
 
@@ -25,11 +25,12 @@ export function Home() {
     <>
       <GlobalHeader title="CHAT" />
       <Container>
-        <Ionicons name="home-outline" color={theme.colors.gray100} size={50} />
-        <Label size="xl">Home</Label>
+        <Ionicons name="home-outline" size={50} />
+        <Text size="small">Home</Text>
+
         <Separator height={50} />
         <TouchableOpacity onPress={onOpen}>
-          <Label>Open the modal</Label>
+          <Text>Open the modal</Text>
         </TouchableOpacity>
       </Container>
     </>
